@@ -36,18 +36,30 @@ class Program
         Console.Write(">");
         string response = Console.ReadLine();
 
-        // Hardcoded Date for testing for now;
-        newEntry._date = "July 09 2026";
+        DateTime today = DateTime.Now;
+        newEntry._date = today.ToString("dd MMMM yyyy");
         newEntry._promptText = prompt;
         newEntry._entryText = response;
 
         newJournal.AddEntry(newEntry);
+        Console.WriteLine();
 
       }
       else if (userResponse == 2)
       {
         newJournal.DisplayAll();
-      }else if(userResponse == 5)
+      }else if (userResponse == 3)
+      {
+        Console.Write("Enter a filename to save your journal (without .txt): ");
+        string fileName = Console.ReadLine();
+        newJournal.SaveToFile(fileName);
+      }else if (userResponse == 4)
+      {
+        Console.Write("Enter a filename to load your journal (without .txt): ");
+        string fileName = Console.ReadLine();
+        newJournal.LoadFromFile(fileName);
+      }
+      else if(userResponse == 5)
       {
         Console.WriteLine("Thanks for entering our page!");
         break;
