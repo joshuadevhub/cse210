@@ -1,3 +1,8 @@
+// Creativity: This program exceeds the core requirements by allowing
+// the user to record their mood along with each journal entry.
+// The mood is displayed and saved to the file, and it is restored
+// when the journal is loaded.
+
 using System;
 using System.Collections.Generic;
 
@@ -31,6 +36,10 @@ class Program
       if (userResponse == 1)
       {
         Entry newEntry = new Entry();
+
+        Console.Write("How are you feeling today: ");
+        string userMood = Console.ReadLine();
+
         string prompt = newPrompt.GetRandomPrompt();
         Console.WriteLine(prompt);
         Console.Write(">");
@@ -38,6 +47,7 @@ class Program
 
         DateTime today = DateTime.Now;
         newEntry._date = today.ToString("dd MMMM yyyy");
+        newEntry._mood = userMood;
         newEntry._promptText = prompt;
         newEntry._entryText = response;
 
@@ -68,7 +78,6 @@ class Program
       {
         Console.WriteLine("Invalid Choice! Please chose again.");
         Console.WriteLine();
-        // continue;
       }
     }
 

@@ -23,7 +23,7 @@ public class Journal
     StreamWriter writer = new StreamWriter($"{file}.txt");
     foreach (Entry entry in _entries)
     {
-      writer.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+      writer.WriteLine($"{entry._date}|{entry._mood}|{entry._promptText}|{entry._entryText}");
     }
     writer.Close();
   }
@@ -42,8 +42,9 @@ public class Journal
 
         Entry newEntry = new Entry();
         newEntry._date = parts[0];
-        newEntry._promptText = parts[1];
-        newEntry._entryText = parts[2];
+        newEntry._mood = parts[1];
+        newEntry._promptText = parts[2];
+        newEntry._entryText = parts[3];
         AddEntry(newEntry);
 
         line = reader.ReadLine();
